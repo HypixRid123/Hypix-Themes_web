@@ -1,0 +1,91 @@
+/* =========================
+   HYPIX THEMES SCRIPT.JS
+========================= */
+
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute("href"));
+
+        if(target){
+            target.scrollIntoView({
+                behavior:"smooth"
+            });
+        }
+    });
+});
+
+// ================= HELPER =================
+
+const helperBtn = document.getElementById("helperBtn");
+const helper = document.getElementById("helper");
+
+if(helperBtn && helper){
+
+helperBtn.addEventListener("click",()=>{
+
+helper.classList.add("show");
+
+setTimeout(()=>{
+
+helper.classList.remove("show");
+
+},2500);
+
+});
+
+}
+
+// ================= ADD TO CART =================
+
+document.querySelectorAll(".btn").forEach(button=>{
+
+if(button.textContent.includes("Add to Cart")){
+
+button.addEventListener("click",(e)=>{
+
+e.preventDefault();
+
+alert("🛒 Item added to cart!");
+
+});
+
+}
+
+});
+
+// ================= REVIEW AUTO HIGHLIGHT =================
+
+const reviews=document.querySelectorAll(".review");
+
+let currentReview=0;
+
+if(reviews.length){
+
+setInterval(()=>{
+
+reviews.forEach(card=>{
+
+card.style.transform="scale(1)";
+card.style.boxShadow="none";
+
+});
+
+reviews[currentReview].style.transform="scale(1.05)";
+reviews[currentReview].style.boxShadow="0 0 25px #7C3AED";
+
+currentReview++;
+
+if(currentReview>=reviews.length){
+
+currentReview=0;
+
+}
+
+},2500);
+
+}
+
+// ================= SCROLL AN
